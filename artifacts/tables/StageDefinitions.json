@@ -1,0 +1,66 @@
+{
+  "name": "StageDefinitions",
+  "description": "Reference/config data: the ordered list of program stages for each track. Not client-scoped (no PII; readable by all authenticated users). StageMilestones reference these. Descriptions are DRAFT (UCF to refine).",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "order",
+      "type": "number",
+      "description": "1-based order of this stage within its track"
+    },
+    {
+      "name": "stageName",
+      "type": "string",
+      "description": "Stage name"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Short stage description (DRAFT — UCF to refine)"
+    },
+    {
+      "name": "track",
+      "type": "string",
+      "description": "Program track",
+      "enum": [
+        "Traction",
+        "Growth",
+        "Soft Landing"
+      ]
+    }
+  ]
+}

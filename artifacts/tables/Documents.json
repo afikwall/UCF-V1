@@ -1,0 +1,61 @@
+{
+  "name": "Documents",
+  "description": "Documents attached to a Client. CLIENT-READABLE: carries scalar ownerEmail (= parent Client.ownerEmail) set on create → SAME manual role-aware RowPolicy as Clients. fileUrl stores the uploaded file URL (reserved column name 'file' avoided). Policies configured manually, NOT in this artifact.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "fileUrl",
+      "type": "string",
+      "description": "Uploaded file URL"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Document type/category"
+    },
+    {
+      "name": "ownerEmail",
+      "type": "string",
+      "description": "Scalar row-scope owner (= parent Client.ownerEmail), set on create. Drives the manual RowPolicy for client isolation."
+    },
+    {
+      "name": "clientId",
+      "type": "string",
+      "description": "Client this document belongs to"
+    }
+  ]
+}

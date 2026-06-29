@@ -1,0 +1,77 @@
+{
+  "name": "Users",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "User name"
+    },
+    {
+      "name": "firstName",
+      "type": "string",
+      "description": "First name"
+    },
+    {
+      "name": "lastName",
+      "type": "string",
+      "description": "Last name"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "description": "Email address"
+    },
+    {
+      "name": "profileImageUrl",
+      "type": "string",
+      "description": "Profile image URL"
+    },
+    {
+      "name": "role",
+      "type": "string",
+      "description": "role",
+      "enum": [
+        "ProgramAdmin",
+        "Client",
+        "Funder",
+        "ProgramCoordinator",
+        "SiteManager"
+      ]
+    }
+  ]
+}

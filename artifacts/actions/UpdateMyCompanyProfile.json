@@ -1,0 +1,47 @@
+{
+  "name": "UpdateMyCompanyProfile",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "Optional. Required only when the caller is linked to more than one client; must be one of the caller's authorized clients."
+      },
+      "description": {
+        "type": "string",
+        "description": "Company description"
+      },
+      "website": {
+        "type": "string",
+        "description": "Company website URL"
+      },
+      "logoUrl": {
+        "type": "string",
+        "description": "Company logo file URL"
+      },
+      "phone": {
+        "type": "string",
+        "description": "Contact phone (stored on ceoPhone)"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "clientId": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

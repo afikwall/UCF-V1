@@ -1,0 +1,60 @@
+{
+  "name": "ClientUsers",
+  "description": "Linkage table mapping a client user's email to a client company. NOT 1:1 — a user may have multiple rows (multiple companies). userEmail is stored trimmed + lowercased (canonical form used by usePersona() lookups). clientId is a FREE string reference for now — the Clients table does not exist yet (created in a later milestone), so no reference constraint is applied.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "userEmail",
+      "type": "string",
+      "description": "Client user's email, stored trimmed + lowercased"
+    },
+    {
+      "name": "clientId",
+      "type": "string",
+      "description": "Free reference to a client company (plain string until the Clients table exists)"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Invitation/access status of this client user",
+      "enum": [
+        "Invited",
+        "Active"
+      ]
+    }
+  ]
+}

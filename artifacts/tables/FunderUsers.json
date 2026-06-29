@@ -1,0 +1,51 @@
+{
+  "name": "FunderUsers",
+  "description": "Linkage table mapping a funder user's email to a funder. userEmail is stored trimmed + lowercased (canonical form used by usePersona() lookups). funderId is a FREE string reference for now — the Funders table does not exist yet (created in a later milestone), so no reference constraint is applied.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "userEmail",
+      "type": "string",
+      "description": "Funder user's email, stored trimmed + lowercased"
+    },
+    {
+      "name": "funderId",
+      "type": "string",
+      "description": "Free reference to a funder (plain string until the Funders table exists)"
+    }
+  ]
+}

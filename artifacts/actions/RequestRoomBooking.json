@@ -1,0 +1,52 @@
+{
+  "name": "RequestRoomBooking",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "facilityId",
+      "startTime",
+      "endTime"
+    ],
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "Optional. Required only when the caller is linked to more than one client."
+      },
+      "facilityId": {
+        "type": "string",
+        "description": "Facility to book"
+      },
+      "startTime": {
+        "type": "string",
+        "description": "ISO 8601 datetime start"
+      },
+      "endTime": {
+        "type": "string",
+        "description": "ISO 8601 datetime end"
+      },
+      "purpose": {
+        "type": "string",
+        "description": "Purpose of the booking"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "bookingId": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

@@ -1,0 +1,206 @@
+{
+  "name": "Applications",
+  "description": "Holds applicant submissions from the public intake wizard. Anonymous (no-login) users can CREATE rows via the public app; the table is NOT publicly readable. Internal staff read rows scoped to their assigned sites via selectedSiteId (P0.3 usePersona siteIds). Partner-referral rows carry only the 5 screener booleans + status (no PII). Demographic and contact fields are staff-read only and must never be surfaced on any public screen.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "holdReason",
+      "type": "string",
+      "description": "Reason the application is on Hold (required when status = Hold)"
+    },
+    {
+      "name": "companyName",
+      "type": "string",
+      "description": "Company / venture name"
+    },
+    {
+      "name": "founderName",
+      "type": "string",
+      "description": "Primary founder full name"
+    },
+    {
+      "name": "founderEmail",
+      "type": "string",
+      "description": "Founder email, stored trimmed + lowercased"
+    },
+    {
+      "name": "founderPhone",
+      "type": "string",
+      "description": "Founder phone number"
+    },
+    {
+      "name": "screenerQ1",
+      "type": "boolean",
+      "description": "Screener: business is headquartered in Central Florida (CFL HQ). DRAFT wording."
+    },
+    {
+      "name": "screenerQ2",
+      "type": "boolean",
+      "description": "Screener: business is for-profit. DRAFT wording."
+    },
+    {
+      "name": "screenerQ3",
+      "type": "boolean",
+      "description": "Screener: business is independent of a franchise. DRAFT wording."
+    },
+    {
+      "name": "screenerQ4",
+      "type": "boolean",
+      "description": "Screener: business is scalable. DRAFT wording."
+    },
+    {
+      "name": "screenerQ5",
+      "type": "boolean",
+      "description": "Screener: business is technology / innovation-driven. DRAFT wording."
+    },
+    {
+      "name": "recommendedTrack",
+      "type": "string",
+      "description": "Track the applicant selected / was routed to",
+      "enum": [
+        "Traction",
+        "Growth",
+        "Soft Landing",
+        "Partner Referral"
+      ]
+    },
+    {
+      "name": "businessDescription",
+      "type": "string",
+      "description": "Description of the business"
+    },
+    {
+      "name": "industryNaics",
+      "type": "string",
+      "description": "Industry / NAICS code"
+    },
+    {
+      "name": "stage",
+      "type": "string",
+      "description": "Business stage"
+    },
+    {
+      "name": "competitiveAdvantage",
+      "type": "string",
+      "description": "Competitive advantage"
+    },
+    {
+      "name": "marketValidation",
+      "type": "string",
+      "description": "Market validation evidence"
+    },
+    {
+      "name": "growthPlan",
+      "type": "string",
+      "description": "Growth plan"
+    },
+    {
+      "name": "financials",
+      "type": "string",
+      "description": "Financials summary"
+    },
+    {
+      "name": "programFit",
+      "type": "string",
+      "description": "Why the program is a fit"
+    },
+    {
+      "name": "ucfConnections",
+      "type": "string",
+      "description": "Connections to UCF"
+    },
+    {
+      "name": "race",
+      "type": "string",
+      "description": "Demographic: race (optional, staff-read only)"
+    },
+    {
+      "name": "ethnicity",
+      "type": "string",
+      "description": "Demographic: ethnicity (optional, staff-read only)"
+    },
+    {
+      "name": "veteran",
+      "type": "string",
+      "description": "Demographic: veteran status (optional, staff-read only)"
+    },
+    {
+      "name": "ageGroup",
+      "type": "string",
+      "description": "Demographic: age group (optional, staff-read only)"
+    },
+    {
+      "name": "disability",
+      "type": "string",
+      "description": "Demographic: disability status (optional, staff-read only)"
+    },
+    {
+      "name": "referralSource",
+      "type": "string",
+      "description": "How the applicant heard about the program (optional)"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Application lifecycle status",
+      "enum": [
+        "Screener Started",
+        "Partner Referral",
+        "Site Selected",
+        "Application Submitted",
+        "Under Review",
+        "Intro Meeting",
+        "Presentation",
+        "Scored",
+        "Accepted",
+        "Declined",
+        "Hold",
+        "Withdrawn"
+      ]
+    },
+    {
+      "name": "selectedSiteId",
+      "type": "string",
+      "description": "Incubator site the applicant selected; drives staff site-scope"
+    },
+    {
+      "name": "followUpDate",
+      "type": "string",
+      "description": "Follow-up date for a held application (required when status = Hold). ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30"
+    }
+  ]
+}

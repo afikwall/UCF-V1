@@ -1,0 +1,48 @@
+{
+  "name": "ClientPortalSafeCoaching",
+  "query": {
+    "from": {
+      "table": "CoachingSessions",
+      "as": "s"
+    },
+    "select": [
+      {
+        "column": "s.id",
+        "as": "id"
+      },
+      {
+        "column": "s.clientId",
+        "as": "clientId"
+      },
+      {
+        "column": "s.ownerEmail",
+        "as": "ownerEmail"
+      },
+      {
+        "column": "s.date",
+        "as": "date"
+      },
+      {
+        "column": "s.type",
+        "as": "type"
+      },
+      {
+        "column": "s.durationMinutes",
+        "as": "durationMinutes"
+      },
+      {
+        "column": "s.topics",
+        "as": "topics"
+      },
+      {
+        "column": "s.actionItems",
+        "as": "actionItems"
+      },
+      {
+        "column": "s.nextSessionDate",
+        "as": "nextSessionDate"
+      }
+    ]
+  },
+  "calculatedColumns": []
+}

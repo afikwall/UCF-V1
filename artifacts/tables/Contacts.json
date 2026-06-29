@@ -1,0 +1,99 @@
+{
+  "name": "Contacts",
+  "description": "Staff-only contacts/CRM directory. email is stored normalized (trim+lowercase) via normalizeEmail (src/utils/EmailUtils.ts) on every write. tags is a comma-separated list of segments (for Constant Contact segmentation; multiselect in UI). siteId scopes to a site for SiteManager/ProgramCoordinator; a BLANK siteId means program-wide (visible to ALL staff — these are shared, not site-specific). Site-scoped read = site rows + program-wide (blank siteId) union. All seed data DRAFT until UCF/Constant Contact export provides the real list.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "fullName",
+      "type": "string",
+      "description": "Full name"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "description": "Email (stored trimmed + lowercased)"
+    },
+    {
+      "name": "phone",
+      "type": "string",
+      "description": "Phone number"
+    },
+    {
+      "name": "company",
+      "type": "string",
+      "description": "Company / organization"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Job title"
+    },
+    {
+      "name": "contactType",
+      "type": "string",
+      "description": "Type of contact",
+      "enum": [
+        "Mentor",
+        "Partner",
+        "Investor",
+        "Sponsor",
+        "Service Provider",
+        "Other"
+      ]
+    },
+    {
+      "name": "tags",
+      "type": "string",
+      "description": "Comma-separated tags/segments for Constant Contact segmentation"
+    },
+    {
+      "name": "expertise",
+      "type": "string",
+      "description": "Areas of expertise (esp. for mentors)"
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "description": "Notes"
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Site for staff scope; BLANK = program-wide (all staff)"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "name": "EvaluateApplication",
+  "type": "dag",
+  "description": "AI fit-assessment for an application. Loads the application by id and asks the Iris reviewer agent to score it against the 5 weighted criteria, returning a structured fit assessment (per-criterion scores 1-5, weightedTotal 0-100, decisionRecommendation, notes) that the UI uses to pre-populate a FitAssessmentScorecards row. Does not write the scorecard itself (human reviews before saving).",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "applicationId"
+    ],
+    "properties": {
+      "applicationId": {
+        "type": "string",
+        "description": "Id of the application to evaluate"
+      }
+    },
+    "title": "EvaluateApplicationInput",
+    "description": "EvaluateApplication input payload"
+  },
+  "output": "Evaluate",
+  "exposedToUI": true,
+  "actionNodes": [
+    {
+      "name": "GetApplication",
+      "actionTypeId": "6889efd036950200cc6dd9e9&6a4131f0ec5359e466de83bc&get-one",
+      "input": {
+        "itemId": "{{input.applicationId}}"
+      }
+    },
+    {
+      "name": "Evaluate",
+      "actionTypeId": "69f1b08809dd684df528df8d",
+      "input": {
+        "agentBlockId": "6a413a164eaf88d70e9a5700",
+        "promptSummary": "Score this application against the UCF BIP fit criteria",
+        "prompt": "Evaluate this UCF Business Incubation Program application and score it against the five weighted criteria. Return structured output.\n\nCompany: {{GetApplication.companyName}}\nRecommended track: {{GetApplication.recommendedTrack}}\nBusiness description: {{GetApplication.businessDescription}}\nIndustry/NAICS: {{GetApplication.industryNaics}}\nStage: {{GetApplication.stage}}\nCompetitive advantage: {{GetApplication.competitiveAdvantage}}\nMarket validation: {{GetApplication.marketValidation}}\nGrowth plan: {{GetApplication.growthPlan}}\nFinancials: {{GetApplication.financials}}\nProgram fit (applicant stated): {{GetApplication.programFit}}\nUCF connections: {{GetApplication.ucfConnections}}\nScreener (all should be yes): CFL HQ={{GetApplication.screenerQ1}}, for-profit={{GetApplication.screenerQ2}}, independent-of-franchise={{GetApplication.screenerQ3}}, scalable={{GetApplication.screenerQ4}}, tech/innovation-driven={{GetApplication.screenerQ5}}.",
+        "structuredOutputJsonSchema": {
+          "type": "object",
+          "required": [
+            "scoreMarket",
+            "scoreTechnology",
+            "scoreTeam",
+            "scoreTraction",
+            "scoreProgramFit",
+            "weightedTotal",
+            "decisionRecommendation",
+            "notes"
+          ],
+          "properties": {
+            "scoreMarket": {
+              "type": "number",
+              "description": "Market / Scalability, 1-5"
+            },
+            "scoreTechnology": {
+              "type": "number",
+              "description": "Technology / Innovation, 1-5"
+            },
+            "scoreTeam": {
+              "type": "number",
+              "description": "Team, 1-5"
+            },
+            "scoreTraction": {
+              "type": "number",
+              "description": "Traction / Validation, 1-5"
+            },
+            "scoreProgramFit": {
+              "type": "number",
+              "description": "Program Fit, 1-5"
+            },
+            "weightedTotal": {
+              "type": "number",
+              "description": "Weighted total, 0-100"
+            },
+            "decisionRecommendation": {
+              "type": "string",
+              "enum": [
+                "Accept",
+                "Decline",
+                "Hold"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "description": "Concise rationale, 3-6 sentences"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "name": "e1ConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnectionConnection",
+      "source": "GetApplication",
+      "target": "Evaluate"
+    }
+  ]
+}

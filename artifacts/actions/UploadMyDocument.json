@@ -1,0 +1,42 @@
+{
+  "name": "UploadMyDocument",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "fileUrl"
+    ],
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "Optional. Required only when the caller is linked to more than one client."
+      },
+      "fileUrl": {
+        "type": "string",
+        "description": "Uploaded file URL (from useFileUpload)"
+      },
+      "type": {
+        "type": "string",
+        "description": "Document label/type, e.g. Pitch Deck, Financials. Defaults to General."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "documentId": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

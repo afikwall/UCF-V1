@@ -1,0 +1,24 @@
+{
+  "name": "PublicSites",
+  "query": {
+    "from": {
+      "table": "Sites",
+      "as": "s"
+    },
+    "select": [
+      {
+        "column": "s.id",
+        "as": "id"
+      },
+      {
+        "column": "s.siteName",
+        "as": "siteName"
+      },
+      {
+        "column": "s.status",
+        "as": "status"
+      }
+    ]
+  },
+  "calculatedColumns": []
+}

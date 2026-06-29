@@ -1,0 +1,104 @@
+{
+  "name": "ClientPortalSafe",
+  "query": {
+    "from": {
+      "table": "Clients",
+      "as": "c"
+    },
+    "select": [
+      {
+        "column": "c.id",
+        "as": "id"
+      },
+      {
+        "column": "c.companyName",
+        "as": "companyName"
+      },
+      {
+        "column": "c.founderEmail",
+        "as": "founderEmail"
+      },
+      {
+        "column": "c.ownerEmail",
+        "as": "ownerEmail"
+      },
+      {
+        "column": "c.track",
+        "as": "track"
+      },
+      {
+        "column": "c.stage",
+        "as": "stage"
+      },
+      {
+        "column": "c.status",
+        "as": "status"
+      },
+      {
+        "column": "c.siteId",
+        "as": "siteId"
+      },
+      {
+        "column": "c.suite",
+        "as": "suite"
+      },
+      {
+        "column": "c.locationType",
+        "as": "locationType"
+      },
+      {
+        "column": "c.industryNaics",
+        "as": "industryNaics"
+      },
+      {
+        "column": "c.startDate",
+        "as": "startDate"
+      },
+      {
+        "column": "c.ceoName",
+        "as": "ceoName"
+      },
+      {
+        "column": "c.ceoEmail",
+        "as": "ceoEmail"
+      },
+      {
+        "column": "c.ceoPhone",
+        "as": "ceoPhone"
+      },
+      {
+        "column": "c.website",
+        "as": "website"
+      },
+      {
+        "column": "c.description",
+        "as": "description"
+      },
+      {
+        "column": "c.logoUrl",
+        "as": "logoUrl"
+      },
+      {
+        "column": "c.funding",
+        "as": "funding"
+      },
+      {
+        "column": "c.revenue",
+        "as": "revenue"
+      },
+      {
+        "column": "c.teamSize",
+        "as": "teamSize"
+      },
+      {
+        "column": "c.mentorsEngaged",
+        "as": "mentorsEngaged"
+      },
+      {
+        "column": "c.resourcesUsed",
+        "as": "resourcesUsed"
+      }
+    ]
+  },
+  "calculatedColumns": []
+}

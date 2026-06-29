@@ -1,0 +1,60 @@
+{
+  "name": "StaffAssignments",
+  "description": "Linkage table mapping a staff user's email to a Site and their staff role at that site. NOT 1:1 — one email may have multiple rows (a staff member assigned to multiple sites). userEmail is stored trimmed + lowercased (canonical form used by usePersona() lookups). The app references UsersEntity by email per platform convention.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "userEmail",
+      "type": "string",
+      "description": "Staff member's email, stored trimmed + lowercased"
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Site this staff member is assigned to"
+    },
+    {
+      "name": "staffRole",
+      "type": "string",
+      "description": "Staff role at this site",
+      "enum": [
+        "SiteManager",
+        "ProgramCoordinator"
+      ]
+    }
+  ]
+}

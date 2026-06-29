@@ -1,0 +1,36 @@
+{
+  "name": "AcceptApplication",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "applicationId"
+    ],
+    "properties": {
+      "applicationId": {
+        "type": "string",
+        "description": "Id of the application to accept"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "clientId",
+      "success"
+    ],
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "Id of the newly created client"
+      },
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

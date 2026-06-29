@@ -1,0 +1,61 @@
+{
+  "name": "StageMilestones",
+  "description": "Template milestones for each StageDefinition. Not client-scoped (templates, no PII). ClientMilestoneProgress rows reference these per client. seedData stageDefinitionId placeholders match the 1-based ORDER of rows in StageDefinitions.seedData (1=Traction/Intake ... 19=Soft Landing/Long-Term Integration); sync remaps to real ids. All titles/descriptions are DRAFT.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "stageDefinitionId",
+      "type": "string",
+      "description": "Stage this milestone belongs to"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "Milestone title (DRAFT)"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Milestone description (DRAFT)"
+    },
+    {
+      "name": "order",
+      "type": "number",
+      "description": "1-based order within the stage"
+    }
+  ]
+}

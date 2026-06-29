@@ -1,0 +1,189 @@
+{
+  "name": "Clients",
+  "description": "A Client is created from an Accepted application via the AcceptApplication server action. ownerEmail is the SCALAR row-scope key (= normalizeEmail(founderEmail)); the MANUAL Clients RowPolicy (App Settings -> Table Permissions) keys on it so Client/Funder 'use' users see only their own row while staff roles pass through. riskLevel and ein are INTERNAL/staff-only and are hidden from non-staff by a MANUAL ColumnPolicy (and excluded from the ClientPortalSafe view). siteId gives staff site scope (app-layer for now). These RowPolicy/ColumnPolicy controls are NOT in this artifact — they are configured manually in App Settings and gate client login.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "companyName",
+      "type": "string",
+      "description": "Company / venture name"
+    },
+    {
+      "name": "founderEmail",
+      "type": "string",
+      "description": "Founder email (normalized, lowercased)"
+    },
+    {
+      "name": "ownerEmail",
+      "type": "string",
+      "description": "Scalar row-scope owner (= normalized founderEmail). The manual Clients RowPolicy keys on this for Client/Funder isolation."
+    },
+    {
+      "name": "track",
+      "type": "string",
+      "description": "Program track",
+      "enum": [
+        "Traction",
+        "Growth",
+        "Soft Landing"
+      ]
+    },
+    {
+      "name": "stage",
+      "type": "string",
+      "description": "Business stage"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Client lifecycle status",
+      "enum": [
+        "Prospect",
+        "Applicant",
+        "Active",
+        "On Hold",
+        "At Risk",
+        "Withdrawn",
+        "Graduated"
+      ]
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Incubator site (staff site scope)"
+    },
+    {
+      "name": "suite",
+      "type": "string",
+      "description": "Suite / unit at the site"
+    },
+    {
+      "name": "locationType",
+      "type": "string",
+      "description": "Onsite or offsite client",
+      "enum": [
+        "Onsite",
+        "Offsite"
+      ]
+    },
+    {
+      "name": "softLandingOrigin",
+      "type": "string",
+      "description": "Origin country/region for soft-landing clients (INTERNAL)"
+    },
+    {
+      "name": "industryNaics",
+      "type": "string",
+      "description": "Industry / NAICS code"
+    },
+    {
+      "name": "ein",
+      "type": "string",
+      "description": "Employer Identification Number (INTERNAL/staff-only)"
+    },
+    {
+      "name": "ceoName",
+      "type": "string",
+      "description": "CEO full name"
+    },
+    {
+      "name": "ceoEmail",
+      "type": "string",
+      "description": "CEO email"
+    },
+    {
+      "name": "ceoPhone",
+      "type": "string",
+      "description": "CEO phone"
+    },
+    {
+      "name": "website",
+      "type": "string",
+      "description": "Company website URL"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "Company description"
+    },
+    {
+      "name": "logoUrl",
+      "type": "string",
+      "description": "Company logo URL"
+    },
+    {
+      "name": "riskLevel",
+      "type": "string",
+      "description": "INTERNAL/staff-only risk assessment",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ]
+    },
+    {
+      "name": "funding",
+      "type": "number",
+      "description": "Total funding raised (USD)"
+    },
+    {
+      "name": "revenue",
+      "type": "number",
+      "description": "Annual revenue (USD)"
+    },
+    {
+      "name": "teamSize",
+      "type": "number",
+      "description": "Number of team members"
+    },
+    {
+      "name": "mentorsEngaged",
+      "type": "number",
+      "description": "Number of mentors engaged"
+    },
+    {
+      "name": "resourcesUsed",
+      "type": "string",
+      "description": "Program resources used"
+    },
+    {
+      "name": "startDate",
+      "type": "string",
+      "description": "Program start date. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30"
+    }
+  ]
+}

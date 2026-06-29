@@ -1,0 +1,44 @@
+{
+  "name": "UpsertMyMilestoneProgress",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "progressId"
+    ],
+    "properties": {
+      "progressId": {
+        "type": "string",
+        "description": "Id of the ClientMilestoneProgress row to update (must be owned by the caller)."
+      },
+      "status": {
+        "type": "string",
+        "description": "Progress status",
+        "enum": [
+          "Not Started",
+          "In Progress",
+          "Completed"
+        ]
+      },
+      "clientComment": {
+        "type": "string",
+        "description": "Client-entered comment on this milestone."
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

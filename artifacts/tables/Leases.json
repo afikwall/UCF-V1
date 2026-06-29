@@ -1,0 +1,116 @@
+{
+  "name": "Leases",
+  "description": "A lease links a Client to a Facility with financial terms. siteId is denormalized from the facility for the site-scoped {where siteId in scope.siteIds} query (writer stamps siteId = facility.siteId on create). ALL financial fields are STAFF-only and must NEVER be added to a client-portal view/allowed list. Site-scoped staff management.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "clientId",
+      "type": "string",
+      "description": "Client on the lease"
+    },
+    {
+      "name": "facilityId",
+      "type": "string",
+      "description": "Leased facility"
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Site (denormalized from facility) for site scope"
+    },
+    {
+      "name": "suiteNumber",
+      "type": "string",
+      "description": "Suite / unit number"
+    },
+    {
+      "name": "programFee",
+      "type": "number",
+      "description": "Monthly program fee (USD, STAFF-only)"
+    },
+    {
+      "name": "spaceFee",
+      "type": "number",
+      "description": "Monthly space fee (USD, STAFF-only)"
+    },
+    {
+      "name": "totalMonthly",
+      "type": "number",
+      "description": "Total monthly (USD, STAFF-only)"
+    },
+    {
+      "name": "deposit",
+      "type": "number",
+      "description": "Deposit (USD, STAFF-only)"
+    },
+    {
+      "name": "firstPayment",
+      "type": "number",
+      "description": "First payment (USD, STAFF-only)"
+    },
+    {
+      "name": "currentContractAmount",
+      "type": "number",
+      "description": "Current contract amount (USD, STAFF-only)"
+    },
+    {
+      "name": "aggregateContractAmount",
+      "type": "number",
+      "description": "Aggregate contract amount to date (USD, STAFF-only)"
+    },
+    {
+      "name": "terms",
+      "type": "string",
+      "description": "Lease terms"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Lease status",
+      "enum": [
+        "Active",
+        "Pending",
+        "Ended"
+      ]
+    },
+    {
+      "name": "moveInDate",
+      "type": "string",
+      "description": "Move-in date. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30"
+    }
+  ]
+}

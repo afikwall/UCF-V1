@@ -1,0 +1,43 @@
+{
+  "name": "GenerateContract",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "clientId"
+    ],
+    "properties": {
+      "clientId": {
+        "type": "string",
+        "description": "Id of the client to generate a contract for"
+      },
+      "templateKey": {
+        "type": "string",
+        "description": "Template identifier (optional until templates exist)"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "status",
+      "fieldMapJson"
+    ],
+    "properties": {
+      "status": {
+        "type": "string",
+        "description": "pending-template until UCF templates are wired"
+      },
+      "pdfUrl": {
+        "type": "string",
+        "description": "Null/empty until templates are wired"
+      },
+      "fieldMapJson": {
+        "type": "object",
+        "additionalProperties": true,
+        "description": "Mapped contract fields"
+      }
+    }
+  },
+  "exposedToUI": true
+}

@@ -1,0 +1,106 @@
+{
+  "name": "FitAssessmentScorecards",
+  "description": "Weighted fit-assessment scorecard tied to an Application. siteId is denormalized from the application's selectedSiteId so scorecards are site-scoped with the same server-side filter pattern as Applications. Criterion scores are 1-5; weightedTotal is the 0-100 rollup (Market 25, Technology 25, Team 20, Traction 20, ProgramFit 10). aiGenerated marks rows pre-populated by the EvaluateApplication AI action (human reviews + edits before saving). Internal staff-only.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "applicationId",
+      "type": "string",
+      "description": "Application this scorecard assesses"
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Site (denormalized from the application's selectedSiteId) for site-scoping"
+    },
+    {
+      "name": "scoreMarket",
+      "type": "number",
+      "description": "Market / Scalability score (1-5), weight 25"
+    },
+    {
+      "name": "scoreTechnology",
+      "type": "number",
+      "description": "Technology / Innovation score (1-5), weight 25"
+    },
+    {
+      "name": "scoreTeam",
+      "type": "number",
+      "description": "Team score (1-5), weight 20"
+    },
+    {
+      "name": "scoreTraction",
+      "type": "number",
+      "description": "Traction / Validation score (1-5), weight 20"
+    },
+    {
+      "name": "scoreProgramFit",
+      "type": "number",
+      "description": "Program Fit score (1-5), weight 10"
+    },
+    {
+      "name": "weightedTotal",
+      "type": "number",
+      "description": "Weighted total fit score, 0-100"
+    },
+    {
+      "name": "reviewerName",
+      "type": "string",
+      "description": "Name of the reviewer who scored"
+    },
+    {
+      "name": "decisionRecommendation",
+      "type": "string",
+      "description": "Reviewer's recommended decision",
+      "enum": [
+        "Accept",
+        "Decline",
+        "Hold"
+      ]
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "description": "Reviewer notes / rationale"
+    },
+    {
+      "name": "aiGenerated",
+      "type": "boolean",
+      "description": "True when the scorecard was pre-populated by EvaluateApplication AI"
+    }
+  ]
+}

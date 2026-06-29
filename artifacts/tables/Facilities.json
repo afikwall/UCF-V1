@@ -1,0 +1,85 @@
+{
+  "name": "Facilities",
+  "description": "Facilities belong to a Site (siteId). Staff-only management. Site-scoped via the same server-side {where siteId in scope.siteIds} pattern as Clients/Applications. amenities is comma-separated text (multiselect in UI). Seeded with DRAFT Downtown Orlando facilities (siteId 9798818); Eustis + Kissimmee DRAFT facilities inserted via MCP post-sync. All seed data is DRAFT until UCF provides real inventory.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Site this facility belongs to (site scope)"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Facility name (DRAFT)"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Facility type",
+      "enum": [
+        "Office/Suite",
+        "Conference Room"
+      ]
+    },
+    {
+      "name": "capacity",
+      "type": "number",
+      "description": "Capacity (people)"
+    },
+    {
+      "name": "amenities",
+      "type": "string",
+      "description": "Amenities (comma-separated)"
+    },
+    {
+      "name": "availabilityStatus",
+      "type": "string",
+      "description": "Current availability",
+      "enum": [
+        "Available",
+        "Occupied",
+        "Maintenance"
+      ]
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "description": "Notes"
+    }
+  ]
+}

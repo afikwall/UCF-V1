@@ -1,0 +1,36 @@
+{
+  "name": "ClientRoomAvailabilitySafe",
+  "query": {
+    "from": {
+      "table": "FacilityBookings",
+      "as": "b"
+    },
+    "select": [
+      {
+        "column": "b.id",
+        "as": "id"
+      },
+      {
+        "column": "b.facilityId",
+        "as": "facilityId"
+      },
+      {
+        "column": "b.siteId",
+        "as": "siteId"
+      },
+      {
+        "column": "b.startTime",
+        "as": "startTime"
+      },
+      {
+        "column": "b.endTime",
+        "as": "endTime"
+      },
+      {
+        "column": "b.status",
+        "as": "status"
+      }
+    ]
+  },
+  "calculatedColumns": []
+}

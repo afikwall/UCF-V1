@@ -1,0 +1,87 @@
+{
+  "name": "Sites",
+  "description": "Physical incubator sites operated by the UCF Business Incubation Program. Used as the tenancy anchor: staff are assigned to sites via StaffAssignments, and clients/program data will be scoped to sites in later milestones.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "siteName",
+      "type": "string",
+      "description": "Name of the incubator location"
+    },
+    {
+      "name": "address",
+      "type": "string",
+      "description": "Street address"
+    },
+    {
+      "name": "zipCode",
+      "type": "string",
+      "description": "ZIP / postal code"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Operational status of the site",
+      "enum": [
+        "Active",
+        "Under Renovation",
+        "Coming Soon",
+        "Closed"
+      ]
+    },
+    {
+      "name": "currentOccupancy",
+      "type": "number",
+      "description": "Current number of clients occupying the site"
+    },
+    {
+      "name": "city",
+      "type": "string",
+      "description": "City"
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "description": "State (e.g. FL)"
+    },
+    {
+      "name": "totalCapacity",
+      "type": "number",
+      "description": "Total client capacity of the site"
+    }
+  ]
+}

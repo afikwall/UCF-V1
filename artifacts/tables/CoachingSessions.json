@@ -1,0 +1,91 @@
+{
+  "name": "CoachingSessions",
+  "description": "Coaching session records for a Client. CLIENT-READABLE: carries scalar ownerEmail (= parent Client.ownerEmail) set on create → SAME manual role-aware RowPolicy as Clients. sessionNotes is INTERNAL/staff-only and MUST be in the manual ColumnPolicy deny list (hidden from non-staff) and excluded from any client-facing safe view (P3.2). actionItems is client-visible. Policies configured manually, NOT in this artifact.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "sessionNotes",
+      "type": "string",
+      "description": "INTERNAL/staff-only coaching notes. Hidden from clients via manual ColumnPolicy + excluded from client-facing views."
+    },
+    {
+      "name": "ownerEmail",
+      "type": "string",
+      "description": "Scalar row-scope owner (= parent Client.ownerEmail), set on create. Drives the manual RowPolicy for client isolation."
+    },
+    {
+      "name": "clientId",
+      "type": "string",
+      "description": "Client this session is for"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "description": "Session type"
+    },
+    {
+      "name": "durationMinutes",
+      "type": "number",
+      "description": "Session length in minutes"
+    },
+    {
+      "name": "siteManager",
+      "type": "string",
+      "description": "Site manager / coach who led the session"
+    },
+    {
+      "name": "topics",
+      "type": "string",
+      "description": "Topics covered"
+    },
+    {
+      "name": "actionItems",
+      "type": "string",
+      "description": "Action items (client-visible)"
+    },
+    {
+      "name": "nextSessionDate",
+      "type": "string",
+      "description": "Date of the next scheduled session. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30"
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "description": "Session date. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30. ISO 8601 date string, format: YYYY-MM-DD, e.g. 2025-09-30"
+    }
+  ]
+}
