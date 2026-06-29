@@ -1,0 +1,31 @@
+{
+  "name": "DenyAccessRequest",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "requestId"
+    ],
+    "properties": {
+      "requestId": {
+        "type": "string",
+        "description": "AccessRequests.id to deny"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

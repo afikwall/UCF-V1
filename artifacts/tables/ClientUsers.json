@@ -1,6 +1,6 @@
 {
   "name": "ClientUsers",
-  "description": "Linkage table mapping a client user's email to a client company. NOT 1:1 — a user may have multiple rows (multiple companies). userEmail is stored trimmed + lowercased (canonical form used by usePersona() lookups). clientId is a FREE string reference for now — the Clients table does not exist yet (created in a later milestone), so no reference constraint is applied.",
+  "description": "Linkage table mapping a client user's email to a client company. A Client belongs to EXACTLY ONE company: there is one row per userEmail (uniqueness is enforced SERVER-SIDE in the AssignClientCompany / ApproveAccessRequest code actions — they move the single row on reassignment, never insert a duplicate; the platform has no DB unique constraint). A client with no ClientUsers row = Access Pending. userEmail is stored trimmed + lowercased (canonical form used by the data-driven usePersona() resolver). clientId references a Clients company.",
   "columns": [
     {
       "name": "id",

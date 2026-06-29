@@ -13,6 +13,9 @@ import {
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { SitesSection } from '@/components/SitesSection';
 import { StaffSection } from '@/components/StaffSection';
+import { ClientAssignmentSection } from '@/components/ClientAssignmentSection';
+import { FunderAssignmentSection } from '@/components/FunderAssignmentSection';
+import { AccessRequestsInbox } from '@/components/AccessRequestsInbox';
 
 export default function SitesAndUsers() {
   const user = useUser();
@@ -26,7 +29,7 @@ export default function SitesAndUsers() {
 
   if (!user.isAuthenticated) return null;
 
-  if (user.role !== 'ProgramAdmin') {
+  if (user.permission !== 'build') {
     return (
       <div className="mx-auto flex max-w-md flex-col gap-6 p-6">
         <Card>
@@ -47,11 +50,11 @@ export default function SitesAndUsers() {
     <div className="mx-auto flex max-w-5xl flex-col gap-8 p-6">
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Sites &amp; Users
+          Sites &amp; Access
         </h1>
         <p className="text-muted-foreground">
-          Manage incubator locations and assign staff across the UCF Business
-          Incubation Program.
+          Manage incubator locations, staff and company assignments, and access
+          requests across the UCF Business Incubation Program.
         </p>
       </div>
 
@@ -90,6 +93,9 @@ export default function SitesAndUsers() {
 
       <SitesSection />
       <StaffSection />
+      <ClientAssignmentSection />
+      <FunderAssignmentSection />
+      <AccessRequestsInbox />
     </div>
   );
 }

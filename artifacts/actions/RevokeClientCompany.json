@@ -1,0 +1,35 @@
+{
+  "name": "RevokeClientCompany",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "userEmail"
+    ],
+    "properties": {
+      "userEmail": {
+        "type": "string",
+        "description": "Client user's email (will be normalized)"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "removed": {
+        "type": "number",
+        "description": "Number of rows removed"
+      }
+    }
+  },
+  "exposedToUI": true
+}

@@ -1,0 +1,40 @@
+{
+  "name": "AssignFunderCompany",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "userEmail",
+      "funderId"
+    ],
+    "properties": {
+      "userEmail": {
+        "type": "string",
+        "description": "Funder user's email (will be normalized)"
+      },
+      "funderId": {
+        "type": "string",
+        "description": "Funder reference (company) to link"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "created": {
+        "type": "boolean",
+        "description": "true if a new link row was inserted"
+      }
+    }
+  },
+  "exposedToUI": true
+}

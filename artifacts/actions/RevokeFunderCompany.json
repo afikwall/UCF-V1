@@ -1,0 +1,40 @@
+{
+  "name": "RevokeFunderCompany",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "userEmail",
+      "funderId"
+    ],
+    "properties": {
+      "userEmail": {
+        "type": "string",
+        "description": "Funder user's email (will be normalized)"
+      },
+      "funderId": {
+        "type": "string",
+        "description": "Funder reference (company) to unlink"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "removed": {
+        "type": "number",
+        "description": "Number of rows removed"
+      }
+    }
+  },
+  "exposedToUI": true
+}

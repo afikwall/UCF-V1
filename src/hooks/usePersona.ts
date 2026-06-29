@@ -49,27 +49,30 @@ export type PersonaResult =
 export function usePersona(): PersonaResult {
   const user = useUser();
   const email = user.isAuthenticated ? normalizeEmail(user.email) : '';
-  const role = user.role ?? '';
 
-  const isStaff = role === 'SiteManager' || role === 'ProgramCoordinator';
-  const isClient = role === 'Client';
-  const isFunder = role === 'Funder';
+  // ProgramAdmin is detected by Blocks build permission, NOT by user.role.
+  const isBuild = user.permission === 'build';
 
-  // Call ALL hooks unconditionally; gate fetching with `enabled`.
+  // For any authenticated NON-build user we fetch ALL THREE linkage tables,
+  // filtered by the caller's normalized email. The role dropdown does NOT
+  // influence persona — precedence is purely data-driven. All hooks are called
+  // unconditionally (Rules of Hooks); fetching is gated only on auth + email.
+  const linkageEnabled = user.isAuthenticated && !isBuild && !!email;
+
   const staffQuery = useEntityGetAll(
     StaffAssignmentsEntity,
     { userEmail: email },
-    { enabled: user.isAuthenticated && isStaff && !!email },
+    { enabled: linkageEnabled },
   );
   const clientQuery = useEntityGetAll(
     ClientUsersEntity,
     { userEmail: email },
-    { enabled: user.isAuthenticated && isClient && !!email },
+    { enabled: linkageEnabled },
   );
   const funderQuery = useEntityGetAll(
     FunderUsersEntity,
     { userEmail: email },
-    { enabled: user.isAuthenticated && isFunder && !!email },
+    { enabled: linkageEnabled },
   );
 
   const staffRows = staffQuery.data;
@@ -84,7 +87,8 @@ export function usePersona(): PersonaResult {
       return { status: 'unauthenticated' };
     }
 
-    if (role === 'ProgramAdmin') {
+    // build permission === ProgramAdmin, resolved BEFORE any linkage query.
+    if (isBuild) {
       return {
         status: 'ready',
         persona: 'ProgramAdmin',
@@ -94,42 +98,38 @@ export function usePersona(): PersonaResult {
       };
     }
 
-    if (isStaff) {
-      if (staffLoading) return { status: 'loading' };
-      const siteIds = (staffRows ?? [])
+    // Avoid flashing accessPending while linkage tables are still loading.
+    if (staffLoading || clientLoading || funderLoading) {
+      return { status: 'loading' };
+    }
+
+    // LOCKED precedence: StaffAssignments > FunderUsers > ClientUsers > pending.
+    const staffList = staffRows ?? [];
+    if (staffList.length > 0) {
+      const siteIds = staffList
         .map((r) => r.siteId)
         .filter(Boolean) as string[];
-      if (siteIds.length === 0) return { status: 'accessPending' };
+      const hasSiteManager = staffList.some(
+        (r) => r.staffRole === 'SiteManager',
+      );
+      const persona: 'SiteManager' | 'ProgramCoordinator' = hasSiteManager
+        ? 'SiteManager'
+        : (staffList[0].staffRole as 'SiteManager' | 'ProgramCoordinator') ??
+          'ProgramCoordinator';
       return {
         status: 'ready',
-        persona: role as 'SiteManager' | 'ProgramCoordinator',
+        persona,
         scope: { siteIds },
         canSeeSite: (id: string) => siteIds.includes(id),
         canSeeClient: () => false,
       };
     }
 
-    if (isClient) {
-      if (clientLoading) return { status: 'loading' };
-      const clientIds = (clientRows ?? [])
-        .map((r) => r.clientId)
-        .filter(Boolean) as string[];
-      if (clientIds.length === 0) return { status: 'accessPending' };
-      return {
-        status: 'ready',
-        persona: 'Client',
-        scope: { clientIds },
-        canSeeSite: () => false,
-        canSeeClient: (id: string) => clientIds.includes(id),
-      };
-    }
-
-    if (isFunder) {
-      if (funderLoading) return { status: 'loading' };
-      const funderIds = (funderRows ?? [])
+    const funderList = funderRows ?? [];
+    if (funderList.length > 0) {
+      const funderIds = funderList
         .map((r) => r.funderId)
         .filter(Boolean) as string[];
-      if (funderIds.length === 0) return { status: 'accessPending' };
       return {
         status: 'ready',
         persona: 'Funder',
@@ -139,13 +139,24 @@ export function usePersona(): PersonaResult {
       };
     }
 
+    const clientList = clientRows ?? [];
+    if (clientList.length > 0) {
+      const clientIds = clientList
+        .map((r) => r.clientId)
+        .filter(Boolean) as string[];
+      return {
+        status: 'ready',
+        persona: 'Client',
+        scope: { clientIds },
+        canSeeSite: () => false,
+        canSeeClient: (id: string) => clientIds.includes(id),
+      };
+    }
+
     return { status: 'accessPending' };
   }, [
     user.isAuthenticated,
-    role,
-    isStaff,
-    isClient,
-    isFunder,
+    isBuild,
     staffRows,
     staffLoading,
     clientRows,

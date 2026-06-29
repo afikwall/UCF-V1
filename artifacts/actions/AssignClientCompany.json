@@ -1,0 +1,40 @@
+{
+  "name": "AssignClientCompany",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "userEmail",
+      "clientId"
+    ],
+    "properties": {
+      "userEmail": {
+        "type": "string",
+        "description": "Client user's email (will be normalized)"
+      },
+      "clientId": {
+        "type": "string",
+        "description": "Clients.id of the single company to link"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "moved": {
+        "type": "boolean",
+        "description": "true if an existing row was reassigned"
+      }
+    }
+  },
+  "exposedToUI": true
+}

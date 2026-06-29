@@ -1,0 +1,55 @@
+{
+  "name": "SubmitAccessRequest",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "requestedUserEmail",
+      "requestedRole"
+    ],
+    "properties": {
+      "requestedUserEmail": {
+        "type": "string",
+        "description": "Email to be granted access"
+      },
+      "requestedRole": {
+        "type": "string",
+        "description": "Client | Funder | SiteManager | ProgramCoordinator"
+      },
+      "targetClientId": {
+        "type": "string",
+        "description": "Clients.id when requestedRole=Client"
+      },
+      "targetFunderId": {
+        "type": "string",
+        "description": "Funder reference when requestedRole=Funder"
+      },
+      "targetSiteId": {
+        "type": "string",
+        "description": "Sites.id when requestedRole is staff; must be one of the caller's assigned sites"
+      },
+      "note": {
+        "type": "string",
+        "description": "Justification"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "requestId": {
+        "type": "string"
+      }
+    }
+  },
+  "exposedToUI": true
+}

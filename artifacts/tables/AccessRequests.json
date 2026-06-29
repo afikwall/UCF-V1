@@ -1,0 +1,113 @@
+{
+  "name": "AccessRequests",
+  "description": "In-app access-provisioning requests. Staff (SiteManager/ProgramCoordinator), who lack Blocks build permission, file requests to grant a person access to a Client company, a Funder, or a staff site assignment. ProgramAdmins (build users) approve/deny from the Sites & Access inbox. requesterEmail/decidedByEmail are stamped SERVER-SIDE from getCurrentUser() and never trusted from the request body. Approving writes the linkage row immediately; if no Blocks account exists yet, status becomes 'Approved - pending invite' so the admin knows to invite the email as a 'use' member in App Settings -> Members. Scoping: SM/Coordinator see only rows for their own sites or that they filed; ProgramAdmin sees all.",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string",
+      "description": "Item id"
+    },
+    {
+      "name": "createdAt",
+      "type": "datetime",
+      "description": "Item created at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "updatedAt",
+      "type": "datetime",
+      "description": "Item updated at. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "createdBy",
+      "type": "string",
+      "description": "Item created by user id"
+    },
+    {
+      "name": "updatedBy",
+      "type": "string",
+      "description": "Item updated by user id"
+    },
+    {
+      "name": "updatedByAgentId",
+      "type": "string",
+      "description": "Item updated by agent id"
+    },
+    {
+      "name": "tenantId",
+      "type": "string",
+      "description": "Item tenant id"
+    },
+    {
+      "name": "requesterEmail",
+      "type": "string",
+      "description": "Staff member who filed the request (normalized, lowercased). Stamped server-side from getCurrentUser(); never trusted from the request body."
+    },
+    {
+      "name": "requestedUserEmail",
+      "type": "string",
+      "description": "Email of the person being granted access (normalized, lowercased)."
+    },
+    {
+      "name": "note",
+      "type": "string",
+      "description": "Free-text justification supplied by the requester."
+    },
+    {
+      "name": "decidedByEmail",
+      "type": "string",
+      "description": "ProgramAdmin who approved/denied (normalized). Stamped server-side from getCurrentUser()."
+    },
+    {
+      "name": "decidedAt",
+      "type": "datetime",
+      "description": "When the request was approved/denied. ISO 8601 datetime string.. ISO 8601 datetime string, format: YYYY-MM-DDTHH:MM:SS, e.g. 2025-09-30T18:45:00Z, 2025-09-30T18:45:00+05:30"
+    },
+    {
+      "name": "requestedRole",
+      "type": "string",
+      "description": "Persona the requester wants this email to have once approved.",
+      "enum": [
+        "Client",
+        "Funder",
+        "SiteManager",
+        "ProgramCoordinator"
+      ]
+    },
+    {
+      "name": "targetClientId",
+      "type": "string",
+      "description": "Clients.id to link when requestedRole=Client (the single company for that client). Empty otherwise."
+    },
+    {
+      "name": "targetFunderId",
+      "type": "string",
+      "description": "Funder reference to link when requestedRole=Funder (free string until a Funders table exists). Empty otherwise."
+    },
+    {
+      "name": "targetSiteId",
+      "type": "string",
+      "description": "Sites.id to assign when requestedRole=SiteManager/ProgramCoordinator. For staff requesters this must be one of their own assigned sites (enforced server-side)."
+    },
+    {
+      "name": "siteId",
+      "type": "string",
+      "description": "Grouping/scope key for the inbox = the site this request belongs to. Equals targetSiteId for staff requests; for client/funder requests it is the company's primary site when known. Drives SM/Coordinator inbox visibility."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "Lifecycle of the request.",
+      "enum": [
+        "Pending",
+        "Approved",
+        "Approved - pending invite",
+        "Denied"
+      ]
+    },
+    {
+      "name": "inviteCleared",
+      "type": "boolean",
+      "description": "Set true via the 'Invited / account exists' checkbox to clear the pending-invite call-to-action once the admin has invited the email in Members (or confirmed the account exists)."
+    }
+  ]
+}

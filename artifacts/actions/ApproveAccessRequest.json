@@ -1,0 +1,38 @@
+{
+  "name": "ApproveAccessRequest",
+  "type": "code",
+  "inputSchema": {
+    "type": "object",
+    "required": [
+      "requestId"
+    ],
+    "properties": {
+      "requestId": {
+        "type": "string",
+        "description": "AccessRequests.id to approve"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "required": [
+      "success"
+    ],
+    "properties": {
+      "success": {
+        "type": "boolean"
+      },
+      "message": {
+        "type": "string"
+      },
+      "status": {
+        "type": "string",
+        "description": "Resulting request status (Approved | Approved - pending invite)"
+      },
+      "pendingInvite": {
+        "type": "boolean"
+      }
+    }
+  },
+  "exposedToUI": true
+}

@@ -8,12 +8,20 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { PublicLanding } from '@/components/PublicLanding';
+import { RequestAccessForm } from '@/components/RequestAccessForm';
+import { usePersonaContext } from '@/hooks/usePersona';
 
 export default function Home() {
   const user = useUser();
+  const persona = usePersonaContext();
 
   // Logged-out visitors see the public landing page (no redirect to Login).
   if (!user.isAuthenticated) return <PublicLanding />;
+
+  const isStaff =
+    persona.status === 'ready' &&
+    (persona.persona === 'SiteManager' ||
+      persona.persona === 'ProgramCoordinator');
 
   return (
     <div className="mx-auto flex max-w-3xl flex-col gap-6 p-6">
@@ -45,6 +53,8 @@ export default function Home() {
           </p>
         </CardContent>
       </Card>
+
+      {isStaff && <RequestAccessForm />}
     </div>
   );
 }

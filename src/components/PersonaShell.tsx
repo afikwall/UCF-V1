@@ -46,7 +46,7 @@ type NavItem = {
 const navByRole: Record<string, NavItem[]> = {
   ProgramAdmin: [
     { label: 'Dashboard', page: 'Dashboard' },
-    { label: 'Sites & Users', page: 'SitesAndUsers' },
+    { label: 'Sites & Access', page: 'SitesAndUsers' },
     { label: 'Applications', page: 'Applications' },
     { label: 'Pipeline', page: 'Pipeline' },
     { label: 'Clients', page: 'Clients' },
