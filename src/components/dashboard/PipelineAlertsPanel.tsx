@@ -15,7 +15,7 @@ import {
   computeAlerts,
   daysSince,
   PipelineAlertThresholds,
-} from '@/config/pipelineAlerts';
+} from '@/utils/pipelineAlerts';
 
 type App = typeof ApplicationsEntity['instanceType'] & {
   id?: string;

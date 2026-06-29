@@ -6,7 +6,7 @@ import {
   ClientsEntity,
   SitesEntity,
 } from '@/product-types';
-import { useThresholds } from '@/config/pipelineAlerts';
+import { useThresholds } from '@/utils/pipelineAlerts';
 import { KpiStat } from '@/components/dashboard/KpiStat';
 import { StartupsByTrackChart } from '@/components/dashboard/StartupsByTrackChart';
 import { PipelineKpis } from '@/components/dashboard/PipelineKpis';
